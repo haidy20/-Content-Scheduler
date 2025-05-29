@@ -42,9 +42,11 @@ export default function Dashboard() {
       const y = selectedDate.getFullYear();
       const m = selectedDate.getMonth();
       const d = selectedDate.getDate();
+      // Filter for scheduled posts on the selected date
       filtered = filtered.filter(post => {
         const postDate = new Date(post.scheduled_time);
         return (
+          post.status === 'scheduled' && // <-- Added this condition
           postDate.getFullYear() === y &&
           postDate.getMonth() === m &&
           postDate.getDate() === d
@@ -77,6 +79,7 @@ export default function Dashboard() {
       const dayHasPost = posts.some(post => {
         const postDate = new Date(post.scheduled_time);
         return (
+          post.status === 'scheduled' && // <-- Added this condition for calendar tile highlighting as well
           postDate.getFullYear() === date.getFullYear() &&
           postDate.getMonth() === date.getMonth() &&
           postDate.getDate() === date.getDate()
