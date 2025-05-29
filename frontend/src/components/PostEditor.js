@@ -82,8 +82,8 @@ export default function PostEditor() {
 
     if (status === 'scheduled') {
       const scheduledCount = await fetchScheduledPostsCount();
-      if (scheduledCount >= 2) {
-        setSubmitError('❌ You have reached the limit of 2 scheduled posts for today.');
+      if (scheduledCount >= 10) {
+        setSubmitError('❌ You have reached the limit of 10 scheduled posts for today.');
         return;
       }
     }

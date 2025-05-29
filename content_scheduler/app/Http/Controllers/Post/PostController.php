@@ -22,15 +22,15 @@ public function store(PostRequest $request)
     // Rate limiting logic
     if ($postData['status'] === 'scheduled') {
         $user = $request->user();
-$scheduledCount = $user->posts()
-    ->where('status', 'scheduled')
-    ->count();
+        $scheduledCount = $user->posts()
+        ->where('status', 'scheduled')
+        ->count();
 
 
-        if ($scheduledCount >= 2) {
+        if ($scheduledCount >= 10) {
             return response()->json([
                 'status' => false,
-                'message' => 'You have reached the limit of 2 scheduled posts for today.',
+                'message' => 'You have reached the limit of 10 scheduled posts for today.',
                 'data'=>null
             ], 422);
         }

@@ -34,9 +34,9 @@ class ProcessScheduledPosts extends Command
                 $contentLength = strlen($post->content);
                 $isValid = true;
 
-                if ($platformName === 'twitter' && $contentLength > 10) {
+                if ($platformName === 'twitter' && $contentLength > 5) {
                     $isValid = false;
-                } elseif ($platformName === 'linkedin' && $contentLength > 10) {
+                } elseif ($platformName === 'linkedin' && $contentLength > 5) {
                     $isValid = false;
                 }
                 // Instagram has no length limit in this example
